@@ -1,0 +1,600 @@
+1.
+
+Practical
+package Practicals;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class p1 {
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+System.setProperty("webdriver.chrome.driver",
+"C:\\Users\\sayye\\Downloads\\chromedriver_win32(1)\\chromedriver.exe");
+WebDriver driver = new ChromeDriver();
+driver.get("https://www.google.com/");
+}
+}
+
+2.
+
+Write and test a program to login a specific web page.
+
+package Practicals;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class p2 {
+public static void main(String[] args) throws InterruptedException {
+System.setProperty("webdriver.chrome.driver",
+"C:\\Users\\sayye\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
+WebDriver driver = new ChromeDriver();
+driver.get("https://accounts.google.com/ServiceLogin?");
+driver.findElement(By.id("identifierId")).sendKeys("sukaina.sayyed@somaiya.edu");
+driver.findElement(By.id("identifierNext")).click();
+Thread.sleep(10000);
+driver.findElement(By.name("Passwd")).sendKeys("");
+driver.findElement(By.id("passwordNext")).click();
+Thread.sleep(10000);
+String title = driver.getTitle();
+if(title.equals("Google Account")){
+System.out.println("Login Successful");
+}
+else{
+System.out.println("Login Failed");
+}
+driver.findElement(By.xpath("//*[@id=\"gb\"]/div[2]/div[3]/div[1]/div[2]/div/a/img")).click();
+driver.switchTo().frame(1);
+driver.findElement(By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div/div/div[2]/div/div/div[3]/span/a
+/div")).click();
+Thread.sleep(5000);
+String title2 = driver.getTitle();
+if(title2.equals("Sign in - Google Accounts")){
+System.out.println("Logout Successful");
+}
+else{
+System.out.println("Logout Failed");
+}
+}
+}
+
+3. Practical
+GCD
+Html:
+<html>
+<head>
+<script type="text/javascript">
+function gcd()
+{
+var x,y;
+x=parseInt(document.myform.n1.value);
+y=parseInt(document.myform.n2.value);
+while (x!=y)
+{
+if (x>y)
+x=x-y;
+else
+y=y-x;
+}
+document.myform.result.value=x;
+}
+</script>
+</head>
+<body>
+<h1> Program to calculate Gcd of two numbers </h1>
+Enter 2 numbers :
+<form name="myform">
+Number1: <input type="text" name="n1" value="">
+<br><br>
+Number2: <input type="text" name="n2" value=" ">
+<br><br>
+Result: <input type="button" value ="get GCD" onClick="gcd()">
+<br><br>
+GCD is:<input type="text" name="result" value=" ">
+</form>
+</body>
+</html>
+
+java:
+package Practicals;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class Prac3 {
+public static void main(String[] args) {
+System.setProperty("webdriver.chrome.driver","C:\\Users\\sayye\\Downloads\\chromedri
+ver_win32 (1)\\chromedriver.exe");
+WebDriver driver = new ChromeDriver();
+driver.get("C:\\Users\\sayye\\Downloads\\gcd.html");
+driver.findElement(By.id("n1")).sendKeys("");
+driver.findElement(By.id("n2")).sendKeys("");
+driver.findElement(By.id("get GCD")).click();
+String result = driver.findElement(By.name("result")).getAttribute("value");
+System.out.println("Result is: "+result);
+}
+}
+
+LCM:
+Html:
+<html>
+<head>
+<Script type = "text/javascript">
+function LCM()
+{
+var x,y;
+x= parseInt(document.myform.n1.value);
+y= parseInt(document.myform.n2.value);
+for(var i = 1; i<= x*y; i++)
+{
+if (i%x == 0 && i%y == 0)
+break
+}
+document.myform.result.value = i;
+}
+</script>
+
+</head>
+</body>
+<h1>LCM of two numbers</h1>
+Enter two numbers: <form name = "myform">
+Number1: <input type: "text", name="n1", value=" " >
+<br><br>
+Number2: <input type: "text", name="n2", value=" " >
+<br><br>
+<input type = "button", id="btn", value="LCM", onClick="LCM()">
+<br><br>
+LCM: <input type = "text", name="result" , value=" ">
+<br><br>
+</form>
+</body>
+</html>
+
+Java:
+package Practicals;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class Prac10 {
+public static void main(String[] args) throws InterruptedException{
+// TODO Auto-generated method stub
+System.setProperty("webdriver.chrome.driver","C:\\Users\\sayye\\Downloads\\chr
+omedriver_win32 (1)\\chromedriver.exe");
+WebDriver driver = new ChromeDriver();
+driver.get("C:\\Users\\sayye\\OneDrive\\Desktop\\Registration.html");
+driver.findElement(By.id("uname")).sendKeys("Sukaina");
+driver.findElement(By.id("midname")).sendKeys("Kazim");
+driver.findElement(By.id("Lname")).sendKeys("Sayed");
+
+driver.findElement(By.id("date")).sendKeys("04012003");
+driver.findElement(By.name("year3")).click();
+driver.findElement(By.name("female")).click();
+driver.findElement(By.name("yes")).click();
+Thread.sleep(3000);
+driver.findElement(By.name("submit")).click();
+}
+}
+
+4.
+
+Practical
+
+package Practicals;
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class Prac4 {
+public static void main(String[] args) {
+System.setProperty("webdriver.chrome.driver","C:\\Users\\sayye\\Downloads\\chromedri
+ver_win32 (1)\\chromedriver.exe");
+WebDriver driver=new ChromeDriver();
+driver.get("https://www.google.com");
+List mylist= driver.findElements(By.xpath("//a"));
+System.out.println("Number of object =" +mylist.size());
+}
+}
+
+5.
+
+Practical
+
+package Practicals;
+import java.util.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select ;
+
+public class Prac5 {
+public static void main(String[] args) {
+System.setProperty("webdriver.chrome.driver","C:\\Users\\sayye\\Downloads\\chromedri
+ver_win32 (1)\\chromedriver.exe");
+WebDriver driver= new ChromeDriver();
+driver.get("https://www.facebook.com/r.php");
+driver.manage().window().maximize();
+;
+Select se = new
+Select(driver.findElement(By.xpath("//Select[@id='day']")));
+Select se1 = new
+Select(driver.findElement(By.xpath("//Select[@id='month']")));
+Select se2 = new
+Select(driver.findElement(By.xpath("//Select[@id='year']")));
+List mylist = se.getOptions();
+mylist.size();
+System.out.println("Number of items in day list: " +mylist.size());
+List mylist1 = se1.getOptions();
+mylist1.size();
+System.out.println("Number of items in month list: " +mylist1.size());
+List mylist2 = se2.getOptions();
+mylist2.size();
+System.out.println("Number of items years list: " +mylist2.size());
+}
+}
+
+6. Write and test a program to count the number of check
+boxes on the page checked
+and unchecked count.
+
+Html:
+<html>
+<body>
+<form>
+<h2>Select Gender</h2>
+<input type="radio" name="gender" value="male"
+checked> Male<br>
+<input type="radio" name="gender" value="female">
+Female<br>
+<input type="radio" name="gender" value="other"
+checked> Other<br>
+<h2>Select Languages Known</h2>
+<input type="checkbox" name="lang" value="Java"
+checked="checked"> Java<br>
+<input type="checkbox" name="lang" value="PHP"
+checked="checked"> PHP<br> <input type="checkbox"
+name="lang" value="C#"> C#<br>
+<input type="checkbox" name="lang" value="Python"
+checked="checked"> Python<br> <input
+type="checkbox" name="lang" value="Ruby"> Ruby<br>
+<br><br>
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
+
+java:
+package Practicals;
+import java.util.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class Prac6 {
+public static void main(String args[])
+
+{
+System.setProperty("webdriver.chrome.driver","C:\\Users\\sayye\\Downloads\\chromedri
+ver_win32 (1)\\chromedriver.exe");
+WebDriver driver = new ChromeDriver();
+driver.get("file:///C:\\Users\\sayye\\OneDrive\\Desktop\\Prac6.html");
+int chk = 0;
+int unchk = 0;
+int rchk = 0;
+int runchk = 0;
+List <WebElement> els =driver.findElements(By.xpath("//input[@type='checkbox']"));
+for(WebElement el :els)
+{
+if(el.isSelected()) {
+chk++;
+}
+else{
+unchk++;
+}
+}
+System.out.println("Total checked items " + chk);
+System.out.println("Total unchecked items " + unchk);
+List <WebElement> elm =driver.findElements(By.xpath("//input[@type='radio']"));
+for(WebElement ell :elm)
+{
+if(ell.isSelected()) {
+rchk++;
+}
+else{
+runchk++;
+}
+}
+System.out.println("Total checked radio items " + rchk);
+System.out.println("Total unchecked radio items " + runchk);
+}
+}
+
+7. Write and test a program to update 10 student records into
+table into Excel file
+package Practicals;
+import java.io.File;
+import java.io.IOException;
+import java.util.Locale;
+import jxl.CellView;
+import jxl.Workbook;
+import jxl.WorkbookSettings;
+import jxl.format.UnderlineStyle;
+import jxl.write.Label;
+import jxl.write.Number;
+import jxl.write.WritableCellFormat;
+import jxl.write.WritableFont;
+import jxl.write.WritableWorkbook;
+import jxl.write.WritableSheet;
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
+public class Prac7
+{
+private WritableCellFormat timeBoldUnderline;
+private WritableCellFormat times;
+private String inputFile;
+public void setOutputFile(String inputFile) {
+this.inputFile = inputFile;
+}
+public void write() throws IOException, WriteException {
+File file = new File(inputFile);
+WorkbookSettings wbSettings = new WorkbookSettings() ;
+wbSettings.setLocale(new Locale("en","EN"));
+WritableWorkbook workbook = Workbook.createWorkbook(file,
+wbSettings);
+workbook.createSheet("Report", 0);
+WritableSheet excelSheet = workbook.getSheet(0);
+createLabel(excelSheet);
+createContent(excelSheet);
+
+workbook.write();
+workbook.close();
+}
+private void createLabel(WritableSheet sheet) throws WriteException {
+WritableFont time10pt = new WritableFont(WritableFont.TIMES, 10);
+times = new WritableCellFormat(time10pt);
+times.setWrap(true);
+WritableFont times10ptBoldUnderline = new
+WritableFont(WritableFont.TIMES , 10 , WritableFont.BOLD , false,
+UnderlineStyle.SINGLE);
+timeBoldUnderline = new WritableCellFormat(times10ptBoldUnderline);
+timeBoldUnderline.setWrap(true);
+CellView cv = new CellView();
+cv.setFormat(times);
+cv.setFormat(timeBoldUnderline);
+addCaption(sheet, 0,0, "Student Name");
+addCaption(sheet, 1,0, "Subject 1");
+addCaption(sheet, 2,0, "Subject 2");
+addCaption(sheet, 3,0, "Subject 3");
+}
+
+private void createContent(WritableSheet sheet) throws WriteException,
+RowsExceededException {
+for (int i = 1; i<10;i++) {
+addLabel(sheet, 0, i, "Student " +i);
+addNumber(sheet, 1, i, ((i*i)+10));
+addNumber(sheet, 2, i, ((i*i)+4));
+addNumber(sheet, 3, i, ((i*i)+3));
+}
+}
+
+private void addCaption(WritableSheet sheet, int column, int row, String s)
+throws RowsExceededException, WriteException {
+Label label;
+
+label = new Label(column, row, s, timeBoldUnderline);
+sheet.addCell(label);
+}
+private void addNumber(WritableSheet sheet, int column, int row, Integer
+integer)
+throws RowsExceededException, WriteException {
+Number number;
+number = new Number(column, row, integer, times);
+sheet.addCell(number);
+}
+
+private void addLabel(WritableSheet sheet, int column, int row, String s)
+throws RowsExceededException, WriteException {
+Label label;
+label = new Label(column, row, s, times);
+sheet.addCell(label);
+}
+
+public static void main(String[] args) throws WriteException, IOException {
+Prac7 test = new Prac7();
+test.setOutputFile("E:\\excel\\Student.xls");
+test.write();
+System.out.println("Please check the result fileunder C:\\excel");
+}
+}
+
+8.
+
+Practical
+
+package Practicals;
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebElement;
+public class Prac8 {
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+System.setProperty("webdriver.chrome.driver",
+"C:\\Users\\sayye\\Downloads\\chromedriver_win32
+(1)\\chromedriver.exe");
+WebDriver driver = new ChromeDriver();
+driver.get("https://www.amazon.in/");
+List<WebElement> Img =
+driver.findElements(By.tagName("img"));
+List<WebElement> frame =
+driver.findElements(By.tagName("iframe"));
+System.out.println("Total no of img: "+Img.size());
+System.out.println("Total no of frame: "+frame.size());
+
+}
+}
+
+9. Write and test a program to select the number of students
+who have scored more
+than 60 in any one subject (or all subjects).
+
+package Practicals;
+import java.io.File;
+import java.io.IOException;
+import jxl.Cell;
+import jxl.CellType;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
+public class Prac9 {
+
+// TODO Auto-generated method stub
+public String inputFile;
+public void setInputFile(String inputFile)
+{
+this.inputFile = inputFile;
+}
+void read() throws IOException
+{
+File inputWorkbook = new File(inputFile);
+Workbook w;
+boolean flag = false;
+int count = 0;
+try
+{
+w = Workbook.getWorkbook(inputWorkbook);
+//Get the first Sheet
+Sheet sheet = w.getSheet(0);
+//Loop over first 10 columns and lines
+for (int j = 0; j < sheet.getRows(); j++)
+{
+for (int i = 0; i < sheet.getColumns(); i++)
+{
+Cell cell = sheet.getCell(i,j);
+if (cell.getType() == CellType.NUMBER)
+
+{
+if
+(Integer.parseInt(cell.getContents())>60)
+{
+flag =true;
+if (flag == true)
+{
+count++;
+flag = false;
+}
+break;
+}
+}
+}
+}
+System.out.println("Total number of students who scored more than 60 in
+more subjects is : "+count);
+}
+catch (BiffException e)
+{
+e.printStackTrace();
+}
+}
+public static void main(String[] args) throws IOException
+{
+Prac9 test = new Prac9();
+test.setInputFile("C:\\Users\\sayye\\OneDrive\\Documents\\marks.csv");
+test.read();
+}
+
+}
+
+10. Practical
+Html:
+<html>
+<head>
+<title>
+Student Registration
+</title>
+</head>
+
+<body>
+<form align="center">
+
+<h1>Registration</h1>
+
+<div align="center">
+Name: <input type="text" id="uname" value=" "><br><br>
+Middle-name: <input type="text" id="midname" value=" "><br><br>
+Last-name: <input type="text" id="Lname" value=" "><br><br>
+Date: <input type="date" id="date" value=" ">
+</div>
+
+<div align="center">
+<h2>Academic Year</h2>
+<input type="radio" name="year1" >First-Year <br><br>
+<input type="radio" name="year2" >Second-Year <br><br>
+<input type="radio" name="year3" >Third-Year <br><br>
+<input type="radio" name="year4" >Fourth-Year <br><br>
+</div>
+
+<div align="center">
+<h2>Gender</h2>
+<input type="checkbox" name="male">Male
+<input type="checkbox" name="fmale">Female
+<br><br>
+</div>
+
+<div>
+Fees Paid
+<input type="checkbox" name="yes">Yes
+<input type="checkbox" name="no">No
+<br><br>
+</div>
+
+<input type="submit" value="Submit" name="submit">
+</form>
+</body>
+</html>
+
+java:
+package Practicals;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class Prac10 {
+public static void main(String[] args) throws InterruptedException{
+// TODO Auto-generated method stub
+System.setProperty("webdriver.chrome.driver","C:\\Users\\sayye\\Downloads\\chr
+omedriver_win32 (1)\\chromedriver.exe");
+WebDriver driver = new ChromeDriver();
+driver.get("C:\\Users\\sayye\\OneDrive\\Desktop\\Registration.html");
+driver.findElement(By.id("uname")).sendKeys("Sukaina");
+driver.findElement(By.id("midname")).sendKeys("Kazim");
+driver.findElement(By.id("Lname")).sendKeys("Sayed");
+driver.findElement(By.id("date")).sendKeys("04012003");
+driver.findElement(By.name("year3")).click();
+driver.findElement(By.name("female")).click();
+
+driver.findElement(By.name("yes")).click();
+Thread.sleep(3000);
+driver.findElement(By.name("submit")).click();
+}
+}
+
+FACEBOOK LOGIN
+package newwe;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class newwe {
+public static void main(String[] args) throws InterruptedException {
+System.setProperty("webdriver.chrome.driver","C:\\Users\\Admin\\OneDrive\\Desktop\\ST
+PRACTS\\ST PR1\\chromedriver_win32 (1)\\chromedriver.exe");
+WebDriver driver = new ChromeDriver();
+driver.get("https://en-gb.facebook.com/login/?privacy_mutation_token=eyJ0eXBlIjowLCJjcmVhd
+Glvbl90aW1lIjoxNjY4NjA3NjExLCJjYWxsc2l0ZV9pZCI6MjY5NTQ4NDUzMDcyMDk1MX0%3D")
+;
+driver.findElement(By.id("email")).sendKeys("durgeshsingh.r@somaiya.edu");
+Thread.sleep(1000);
+driver.findElement(By.name("pass")).sendKeys("12345");
+driver.findElement(By.id("loginbutton")).click();
+Thread.sleep(1000);
+}
+}
+
+
